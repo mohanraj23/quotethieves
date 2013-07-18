@@ -5,6 +5,8 @@ Quotethieves::Application.routes.draw do
 
   get "staticpages/about"
 
+  get "staticpages/contact"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
