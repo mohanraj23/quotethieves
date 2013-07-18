@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Static pages" do # Beginning of Static pages test specs
 
+	let(:base_title) { "Quote Thieves"} # The value "Quote Thieves" is assigned to the variable "base_title"
+# where ever you need Quote Thieves in title you will see base_title along with #{}
   describe "Home page" do # Beginning of Home page test specs
 
     it "should have the h1 'Quote Thieves'" do
@@ -10,7 +12,7 @@ describe "Static pages" do # Beginning of Static pages test specs
     end
   	it "should have the title 'Home'" do
   		visit '/staticpages/home'
-  		page.should have_selector('title', text => "Quote Thieves|Home")
+  		page.should have_selector('title', text => "#{base_title}|Home")
   	end
 
 
@@ -26,7 +28,7 @@ describe "Static pages" do # Beginning of Static pages test specs
     end
     it "should have the title 'Help'" do
   		visit '/staticpages/help'
-  		page.should have_selector('title', text => "Quote Thieves|Help")
+  		page.should have_selector('title', text => "#{base_title}|Help")
   	end
   end # end of Help page test specs
 
@@ -40,7 +42,7 @@ describe "Static pages" do # Beginning of Static pages test specs
     end
     it "should have the title 'About Us'" do
   		visit '/staticpages/about'
-  		page.should have_selector('title', text => "Quote Thieves|About Us")
+  		page.should have_selector('title', text => "#{base_title}|About Us")
   	end
   end # end of About page test specs
 
@@ -54,7 +56,7 @@ describe "Static pages" do # Beginning of Static pages test specs
     end
     it "should have the title 'Contact Us'" do
   		visit '/staticpages/about'
-  		page.should have_selector('title', text => "Quote Thieves|Contact Us")
+  		page.should have_selector('title', text => "#{base_title}|Contact Us")
   	end
   end # end of Contact page test specs
 
