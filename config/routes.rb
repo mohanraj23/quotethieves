@@ -1,11 +1,18 @@
 Quotethieves::Application.routes.draw do
-  get "staticpages/home"
+ get "users/new"
 
-  get "staticpages/help"
+  root to: 'static_pages#home'
 
-  get "staticpages/about"
+  match '/signup',  to: 'users#new'
 
-  get "staticpages/contact"
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+
+
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

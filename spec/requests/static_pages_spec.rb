@@ -1,64 +1,35 @@
 require 'spec_helper'
 
-describe "Static pages" do # Beginning of Static pages test specs
+describe "Static pages" do
 
-	let(:base_title) { "Quote Thieves"} # The value "Quote Thieves" is assigned to the variable "base_title"
-# where ever you need Quote Thieves in title you will see base_title along with #{}
-  describe "Home page" do # Beginning of Home page test specs
+  subject { page }
 
-    it "should have the h1 'Quote Thieves'" do
-      visit '/staticpages/home' # visit is a capybara function 
-      page.should have_selector('h1',:text => 'Quote Thieves') # page capybara variable to test the page have defined content
-    end
-  	it "should have the title 'Home'" do
-  		visit '/staticpages/home'
-  		page.should have_selector('title', text => "#{base_title}|Home")
-  	end
+  describe "Home page" do
+    before { visit root_path }
 
+    it { should have_selector('h1',    text: 'Quote Thieves') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector 'title', text: '| Home' }
+  end
 
-  end # end of Home page test specs
+  describe "Help page" do
+    before { visit help_path }
 
-  ###################################################################
+    it { should have_selector('h1',    text: 'Help') }
+    it { should have_selector('title', text: full_title('Help')) }
+  end
 
-  describe "Help page" do # Beginning of Help page test specs
+  describe "About page" do
+    before { visit about_path }
 
-    it "should have the h1 'Help'" do
-      visit '/staticpages/help' # visit is a capybara function 
-      page.should have_selector('h1',:text => 'Help') # page capybara variable to test the page have defined content
-    end
-    it "should have the title 'Help'" do
-  		visit '/staticpages/help'
-  		page.should have_selector('title', text => "#{base_title}|Help")
-  	end
-  end # end of Help page test specs
+    it { should have_selector('h1',    text: 'About') }
+    it { should have_selector('title', text: full_title('About Us')) }
+  end
 
-#####################################################################
+  describe "Contact page" do
+    before { visit contact_path }
 
-  describe "About page" do # Beginning of About page test specs
-
-    it "should have the h1 'About Us'" do
-      visit '/staticpages/about' # visit is a capybara function 
-      page.should have_selector('h1',:text => 'About Us') # page capybara variable to test the page have defined content
-    end
-    it "should have the title 'About Us'" do
-  		visit '/staticpages/about'
-  		page.should have_selector('title', text => "#{base_title}|About Us")
-  	end
-  end # end of About page test specs
-
-  #########################################################################
-
-  describe "Contact page" do # Beginning of Contact page test specs
-
-    it "should have the h1 'Contact Us'" do
-      visit '/staticpages/contact' # visit is a capybara function 
-      page.should have_selector('h1',:text => 'Contact Us') # page capybara variable to test the page have defined content
-    end
-    it "should have the title 'Contact Us'" do
-  		visit '/staticpages/about'
-  		page.should have_selector('title', text => "#{base_title}|Contact Us")
-  	end
-  end # end of Contact page test specs
-
-  #########################################################################
-end # end of Static Pages test specs
+    it { should have_selector('h1',    text: 'Contact') }
+    it { should have_selector('title', text: full_title('Contact')) }
+  end
+end
